@@ -14,7 +14,7 @@ _logger = logging.getLogger("Correos Express")
 
 class CorreosDeliveryCarrier(models.Model):
     _inherit = "delivery.carrier"
-    delivery_type = fields.Selection(selection_add=[("correos_express", "Correos Express")])
+    delivery_type = fields.Selection(selection_add=[("correos_express", "Correos Express")], ondelete={"correos_express": 'set default'})
     correos_express_carriage = fields.Selection([('P', 'Paid P'), ('D', 'Due D')], string="Carriage")
     correos_express_packaging_id = fields.Many2one('product.packaging', string="Default Package Type")
     correos_express_product_code = fields.Char("Service Code",help="Provided by Correos Express", default="63")
