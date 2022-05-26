@@ -42,3 +42,8 @@
 	path = OCA/l10n-spain
 	url = git@github.com:OCA/l10n-spain.git
 	branch = 14.0
+
+[submodule "OCA/intrastat-extrastat"]
+	path = OCA/intrastat-extrastat
+	url = git@github.com:OCA/intrastat-extrastat.git
+	branch = 14.0
