@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="correos_credential_configuration" model="ir.ui.view">
+        <field name="name">Correos Configuration</field>
+        <field name="model">res.company</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[last()]" position="after">
+                <page string="Correos Configuration">
+                    <group>
+                        <field name="use_correos_shipping_provider"/>
+                    </group>
+                    <group attrs="{'invisible': [('use_correos_shipping_provider', '!=', True)]}">
+                        <field name="correos_username"
+                               attrs="{'required':[('use_correos_shipping_provider','=',True)]}"/>
+                        <field name="correos_password"
+                               attrs="{'required':[('use_correos_shipping_provider','=',True)]}"/>
+                        <field name="correos_customer_code"
+                               attrs="{'required':[('use_correos_shipping_provider','=',True)]}"/>
+                        <field name="correos_api_url"
+                               attrs="{'required':[('use_correos_shipping_provider','=',True)]}"/>
+                        <field name="correos_tracking_url"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
