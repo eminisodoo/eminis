@@ -57,3 +57,8 @@
 	path = OCA/account-financial-reporting
 	url = git@github.com:OCA/account-financial-reporting.git
 	branch = 14.0
+
+[submodule "OCA/rma"]
+	path = OCA/rma
+	url = git@github.com:OCA/rma.git
+	branch = 14.0
