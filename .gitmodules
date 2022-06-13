@@ -135,3 +135,8 @@
 	path = apps_odoo
 	url = https://gitlab.freyi.es/odoo/apps_odoo.git
 	branch = 15.0
+
+[submodule "OCA/account-financial-reporting"]
+	path = OCA/account-financial-reporting
+	url = git@github.com:OCA/account-financial-reporting.git
+	branch = 15.0
