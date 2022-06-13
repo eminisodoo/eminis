@@ -205,3 +205,8 @@
 	path = OCA/stock-logistics-warehouse
 	url = git@github.com:OCA/stock-logistics-warehouse.git
 	branch = 15.0
+
+[submodule "OCA/brand"]
+	path = OCA/brand
+	url = git@github.com:OCA/brand.git
+	branch = 15.0
