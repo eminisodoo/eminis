@@ -112,3 +112,8 @@
 	path = OCA/rma
 	url = git@github.com:OCA/rma.git
 	branch = 15.0
+
+[submodule "OCA/sale-workflow"]
+	path = OCA/sale-workflow
+	url = git@github.com:OCA/sale-workflow.git
+	branch = 15.0
