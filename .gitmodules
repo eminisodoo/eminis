@@ -68,14 +68,6 @@
 	path = OCA/stock-logistics-warehouse
 	url = git@github.com:OCA/stock-logistics-warehouse.git
 	branch = 15.0
-[submodule "GST"]
-	path = GST
-	url = https://gitlab.freyi.es/odoo/apps_odoo.git
-	branch = 15.0
-[submodule "apps_odoo"]
-	path = apps_odoo
-	url = https://gitlab.freyi.es/odoo/apps_odoo.git
-	branch = 15.0
 
 [submodule "OCA/account-financial-reporting"]
 	path = OCA/account-financial-reporting
