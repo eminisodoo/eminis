@@ -1,0 +1,67 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* gst_eminis_product
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-17 02:11+0000\n"
+"PO-Revision-Date: 2022-06-17 02:11+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: gst_eminis_product
+#: model:ir.model.fields,field_description:gst_eminis_product.field_product_product__estimated_date
+#: model:ir.model.fields,field_description:gst_eminis_product.field_product_template__estimated_date
+msgid "Estimated Date"
+msgstr "Fecha Estimada"
+
+#. module: gst_eminis_product
+#: model:ir.model.fields,field_description:gst_eminis_product.field_product_product__estimated_qty
+#: model:ir.model.fields,field_description:gst_eminis_product.field_product_template__estimated_qty
+msgid "Estimated Qty"
+msgstr "Cantidad Estimada"
+
+#. module: gst_eminis_product
+#: model:ir.model.fields.selection,name:gst_eminis_product.selection__product_template__purchase_tags__on_way
+msgid "On Way"
+msgstr "En Camino"
+
+#. module: gst_eminis_product
+#: model:ir.model.fields,field_description:gst_eminis_product.field_product_product__pre_order
+#: model:ir.model.fields,field_description:gst_eminis_product.field_product_template__pre_order
+#: model:ir.model.fields.selection,name:gst_eminis_product.selection__product_template__purchase_tags__pre_order
+#: model_terms:ir.ui.view,arch_db:gst_eminis_product.view_product_template_form_inherit
+msgid "Pre Order"
+msgstr "Prepedido"
+
+#. module: gst_eminis_product
+#: model:ir.model,name:gst_eminis_product.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: gst_eminis_product
+#: model_terms:ir.ui.view,arch_db:gst_eminis_product.view_product_template_form_inherit
+msgid "Purchase Options"
+msgstr "Opciones de Compra"
+
+#. module: gst_eminis_product
+#: model:ir.model.fields,field_description:gst_eminis_product.field_product_product__purchase_tags
+#: model:ir.model.fields,field_description:gst_eminis_product.field_product_template__purchase_tags
+msgid "Purchase Tags"
+msgstr "Etiquetas"
+
+#. module: gst_eminis_product
+#: model:ir.model.fields.selection,name:gst_eminis_product.selection__product_template__purchase_tags__reserve
+msgid "Reserve"
+msgstr "Reservar"
+
+#. module: gst_eminis_product
+#: model:ir.model.fields.selection,name:gst_eminis_product.selection__product_template__purchase_tags__to_buy
+msgid "To Buy"
+msgstr "Comprar"
