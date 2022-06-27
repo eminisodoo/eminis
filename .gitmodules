@@ -144,3 +144,8 @@
 	url = git@github.com:OCA/product-attribute.git
 	branch = 15.0
 
+
+[submodule "OCA/rma"]
+	path = OCA/rma
+	url = git@github.com:OCA/rma.git
+	branch = 15.0
