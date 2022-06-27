@@ -49,11 +49,6 @@
 	url = git@github.com:OCA/reporting-engine.git
 	branch = 15.0
 
-[submodule "OCA/rma"]
-	path = OCA/rma
-	url = git@github.com:OCA/rma.git
-	branch = 15.0
-
 [submodule "OCA/sale-workflow"]
 	path = OCA/sale-workflow
 	url = git@github.com:OCA/sale-workflow.git
@@ -119,11 +114,6 @@
 	url = git@github.com:OCA/reporting-engine.git
 	branch = 15.0
 
-[submodule "OCA/rma"]
-	path = OCA/rma
-	url = git@github.com:OCA/rma.git
-	branch = 15.0
-
 [submodule "OCA/sale-workflow"]
 	path = OCA/sale-workflow
 	url = git@github.com:OCA/sale-workflow.git
@@ -149,13 +139,8 @@
 	url = git@github.com:OCA/account-financial-reporting.git
 	branch = 14.0
 
-[submodule "OCA/rma"]
-	path = OCA/rma
-	url = git@github.com:OCA/rma.git
-	branch = 14.0
-
 [submodule "OCA/product-attribute"]
 	path = OCA/product-attribute
 	url = git@github.com:OCA/product-attribute.git
-	branch = 14.0
+	branch = 15.0
 
