@@ -64,88 +64,13 @@
 	url = git@github.com:OCA/stock-logistics-warehouse.git
 	branch = 15.0
 
-[submodule "OCA/account-financial-reporting"]
-	path = OCA/account-financial-reporting
-	url = git@github.com:OCA/account-financial-reporting.git
-	branch = 15.0
-
-[submodule "OCA/account-invoicing"]
-	path = OCA/account-invoicing
-	url = git@github.com:OCA/account-invoicing.git
-	branch = 15.0
-
-[submodule "OCA/bank-payment"]
-	path = OCA/bank-payment
-	url = git@github.com:OCA/bank-payment.git
-	branch = 15.0
-
-[submodule "OCA/intrastat-extrastat"]
-	path = OCA/intrastat-extrastat
-	url = git@github.com:OCA/intrastat-extrastat.git
-	branch = 15.0
-
-[submodule "OCA/l10n-spain"]
-	path = OCA/l10n-spain
-	url = git@github.com:OCA/l10n-spain.git
-	branch = 15.0
-
-[submodule "OCA/partner-contact"]
-	path = OCA/partner-contact
-	url = git@github.com:OCA/partner-contact.git
-	branch = 15.0
-
-[submodule "OCA/product-attribute"]
-	path = OCA/product-attribute
-	url = git@github.com:OCA/product-attribute.git
-	branch = 15.0
-
-[submodule "OCA/product-pack"]
-	path = OCA/product-pack
-	url = git@github.com:OCA/product-pack.git
-	branch = 15.0
-
-[submodule "OCA/purchase-workflow"]
-	path = OCA/purchase-workflow
-	url = git@github.com:OCA/purchase-workflow.git
-	branch = 15.0
-
-[submodule "OCA/reporting-engine"]
-	path = OCA/reporting-engine
-	url = git@github.com:OCA/reporting-engine.git
-	branch = 15.0
-
-[submodule "OCA/sale-workflow"]
-	path = OCA/sale-workflow
-	url = git@github.com:OCA/sale-workflow.git
-	branch = 15.0
-
-[submodule "OCA/server-ux"]
-	path = OCA/server-ux
-	url = git@github.com:OCA/server-ux.git
-	branch = 15.0
-
-[submodule "OCA/stock-logistics-warehouse"]
-	path = OCA/stock-logistics-warehouse
-	url = git@github.com:OCA/stock-logistics-warehouse.git
-	branch = 15.0
-
 [submodule "OCA/brand"]
 	path = OCA/brand
 	url = git@github.com:OCA/brand.git
 	branch = 15.0
 
-[submodule "OCA/account-financial-reporting"]
-	path = OCA/account-financial-reporting
-	url = git@github.com:OCA/account-financial-reporting.git
-	branch = 15.0
-
-[submodule "OCA/product-attribute"]
-	path = OCA/product-attribute
-	url = git@github.com:OCA/product-attribute.git
-	branch = 15.0
-
-
 [submodule "OCA/rma"]
 	path = OCA/rma
 	url = git@github.com:OCA/rma.git
 	branch = 15.0
+
