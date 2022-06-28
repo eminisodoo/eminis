@@ -24,7 +24,7 @@ class CorreosDeliveryCarrier(models.Model):
     correos_weight_type = fields.Selection([('R', 'R - Real'),
                                             ('V', 'V - Volumetric')],
                                             string="Correos Weight Type", help="Weight Type provided by Correos",default='R')
-    correos_packaging_id = fields.Many2one('product.packaging', string="Default Package Type")
+    correos_packaging_id = fields.Many2one('stock.package.type', string="Default Package Type")
     correos_product_code = fields.Selection([('S0030','S0030 - NTERNATIONAL PRIORITY PARCEL (I)'),
                                               ('S0033','S0033 - EXPRESS PARCEL (N)'),
                                               ('S0034','S0034 - INTERNATIONAL EXPRESS PARCEL (I)'),

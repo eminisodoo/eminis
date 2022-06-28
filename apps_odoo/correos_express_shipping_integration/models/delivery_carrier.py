@@ -16,7 +16,7 @@ class CorreosDeliveryCarrier(models.Model):
     _inherit = "delivery.carrier"
     delivery_type = fields.Selection(selection_add=[("correos_express", "Correos Express")], ondelete={"correos_express": 'set default'})
     correos_express_carriage = fields.Selection([('P', 'Paid P'), ('D', 'Due D')], string="Carriage")
-    correos_express_packaging_id = fields.Many2one('product.packaging', string="Default Package Type")
+    correos_express_packaging_id = fields.Many2one('stock.package.type', string="Default Package Type")
     correos_express_product_code = fields.Char("Service Code",help="Provided by Correos Express", default="63")
 
 
@@ -35,7 +35,7 @@ class CorreosDeliveryCarrier(models.Model):
                 "alto": "{}".format(self.correos_express_packaging_id.height or 0.0),
                 "ancho": "{}".format(self.correos_express_packaging_id.width or 0.0),
                 "kilos": "{}".format(package.shipping_weight ),
-                "largo": "{}".format(self.correos_express_packaging_id.length or 0.0),
+                "largo": "{}".format(self.correos_express_packaging_id.packaging_length or 0.0),
                 "orden": "{}".format(number_of_package),
                 "volumen": ""
                 }
@@ -46,7 +46,7 @@ class CorreosDeliveryCarrier(models.Model):
                 "alto": "{}".format(self.correos_express_packaging_id.height or 0.0),
                 "ancho": "{}".format(self.correos_express_packaging_id.width or 0.0),
                 "kilos": "{}".format(total_weight),
-                "largo": "{}".format(self.correos_express_packaging_id.length or 0.0),
+                "largo": "{}".format(self.correos_express_packaging_id.packaging_length or 0.0),
                 "orden": "{}".format(number_of_package),
                 "volumen": ""
             }
