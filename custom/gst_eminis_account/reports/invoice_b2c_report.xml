@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <!-- Paperformat reports -->
+        <record id="paperformat_invoice_b2c_report" model="report.paperformat">
+            <field name="name">A4 (Invoice B2C)</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">35</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">1</field>
+            <field name="margin_right">1</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">33</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <!-- QWeb reports -->
+        <record id="invoice_b2c_report" model="ir.actions.report">
+            <field name="name">Invoice B2C</field>
+            <field name="model">account.move</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">gst_eminis_account.invoice_b2c_report_view</field>
+            <field name="report_file">gst_eminis_account.invoice_b2c_report_view</field>
+            <field name="print_report_name">'Invoice B2C - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="gst_eminis_account.paperformat_invoice_b2c_report"/>
+        </record>
+
+
+        <!-- Templates -->
+        <template id="external_layout_invoice_b2c_report">
+            <div class="header o_clean_header">
+                <div class="row" name="head_tittle">
+                    <t t-set="header_address" t-value="o.company_id.partner_id"/>
+                    <div class="col-12">
+                        <table class="table table-sm" style="border: 0px solid transparent;font-size:16px;">
+                            <tr>
+                                <th class="text-center" width="20%"
+                                    style="border-top: 0px solid transparent;">
+                                    <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"
+                                        style="max-height: 120px;" alt="Logo"/>
+                                </th>
+                                <th class="text-left" width="50%"
+                                    style="border-top: 0px solid transparent;">
+                                    <p style="margin-bottom: 1px;">
+                                        <span t-if="header_address.street" style="white-space: nowrap;"
+                                          t-esc="header_address.street"/>
+                                        <span t-if="header_address.street2" style="white-space: nowrap;"
+                                          t-esc="', ' + header_address.street2"/>
+                                    </p>
+                                    <p style="margin-bottom: 1px;">
+                                        <span t-if="header_address.zip" style="white-space: nowrap;"
+                                          t-esc="header_address.zip"/>
+                                        <span t-if="header_address.city" style="white-space: nowrap;"
+                                          t-esc="header_address.city"/>
+                                        <span t-if="header_address.state_id" style="white-space: nowrap;"
+                                          t-esc="' (' + header_address.state_id.name + ')'"/>
+                                    </p>
+                                    <p style="margin-bottom: 1px;">
+                                        <span t-if="header_address.phone" style="white-space: nowrap;"
+                                              t-esc="'Tlf: ' + header_address.phone"/>
+                                        <span t-if="header_address.mobile" style="white-space: nowrap;"
+                                              t-esc="' / ' + header_address.mobile"/>
+                                    </p>
+                                    <p t-if="header_address.vat" style="margin-bottom: 1px;">
+                                        <span t-esc="'CIF: ' + header_address.vat"/>
+                                    </p>
+                                    <p t-if="header_address.website" style="margin-bottom: 1px;">
+                                        <span t-esc="header_address.website"/>
+                                    </p>
+                                </th>
+                                <td class="text-right" width="30%"
+                                    style="border-top: 0px solid transparent;">
+                                    <p style="margin-bottom: 2px;">
+                                        Invoice num.:  <strong><span t-field="o.name"/></strong>
+                                    </p>
+                                    <p style="margin-bottom: 1px;">
+                                        Date:  <strong><span t-field="o.invoice_date"/></strong>
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article">
+                 <t t-raw="0"/>
+            </div>
+
+            <div class="footer"/>
+        </template>
+
+        <template id="invoice_b2c_report_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="gst_eminis_account.external_layout_invoice_b2c_report">
+                        <t t-call="gst_eminis_account.invoice_b2c_report_view_page" t-lang="request.env.user.partner_id.lang"/>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <template id="invoice_b2c_report_view_page">
+            <div class="page" style="font-size:14px !important">
+                <div class="oe_structure"/>
+
+                <div class="row" name="invoice_b2c_address">
+                    <div class="col-sm-12">
+                        <table class="table table-sm" name="invoice_b2c_address_table">
+                            <thead>
+                                <tr>
+                                    <td name="td_sale_to" width="50%"
+                                        style="border-top: 1px solid #000000;text-align:left;">
+                                        <strong>SALE TO:</strong>
+                                    </td>
+                                    <td name="td_shipping_to" width="50%"
+                                        style="border-top: 1px solid #000000;text-align:left;">
+                                        <strong>SHIPPING TO:</strong>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td name="td_partner_address" width="50%"
+                                        style="border-top: 0px solid transparent;text-align:left;">
+                                        <p style="margin-bottom: 1px;">
+                                            <span style="white-space: nowrap;"
+                                              t-esc="o.partner_id.name"/>
+                                        </p>
+                                        <p style="margin-bottom: -1px;">
+                                            <span t-if="o.partner_id.street" style="white-space: nowrap;"
+                                              t-esc="o.partner_id.street"/>
+                                            <span t-if="o.partner_id.street2" style="white-space: nowrap;"
+                                              t-esc="', ' + o.partner_id.street2"/>
+                                        </p>
+                                        <p t-if="o.partner_id.city" style="margin-bottom: 1px;">
+                                            <span style="white-space: nowrap;"
+                                              t-esc="o.partner_id.city"/>
+                                        </p>
+                                        <p style="margin-bottom: -1px;">
+                                            <span t-if="o.partner_id.zip" style="white-space: nowrap;"
+                                              t-esc="o.partner_id.zip"/>
+                                            <span t-if="o.partner_id.state_id" style="white-space: nowrap;"
+                                              t-esc="' - ' + o.partner_id.state_id.name"/>
+                                            <span t-if="o.partner_id.country_id" style="white-space: nowrap;"
+                                              t-esc="', ' + o.partner_id.country_id.name"/>
+                                        </p>
+                                    </td>
+                                    <td name="td_partner_shipping_address" width="50%"
+                                        style="border-top: 0px solid transparent;text-align:left;">
+                                        <p style="margin-bottom: -1px;">
+                                            <span style="white-space: nowrap;"
+                                              t-esc="o.partner_shipping_id.name"/>
+                                        </p>
+                                        <p style="margin-bottom: -1px;">
+                                            <span t-if="o.partner_shipping_id.street" style="white-space: nowrap;"
+                                              t-esc="o.partner_shipping_id.street"/>
+                                            <span t-if="o.partner_shipping_id.street2" style="white-space: nowrap;"
+                                              t-esc="', ' + o.partner_shipping_id.street2"/>
+                                        </p>
+                                        <p t-if="o.partner_shipping_id.city" style="margin-bottom: 1px;">
+                                            <span style="white-space: nowrap;"
+                                              t-esc="o.partner_shipping_id.city"/>
+                                        </p>
+                                        <p style="margin-bottom: -1px;">
+                                            <span t-if="o.partner_shipping_id.zip" style="white-space: nowrap;"
+                                              t-esc="o.partner_shipping_id.zip"/>
+                                            <span t-if="o.partner_shipping_id.state_id" style="white-space: nowrap;"
+                                              t-esc="' - ' + o.partner_shipping_id.state_id.name"/>
+                                            <span t-if="o.partner_shipping_id.country_id" style="white-space: nowrap;"
+                                              t-esc="', ' + o.partner_shipping_id.country_id.name"/>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td name="td_nif-cif" width="50%"
+                                        style="border-top: 0px solid transparent;text-align:left;">
+                                        <p style="margin-bottom: -1px;">
+                                            <strong>NIF-CIF: </strong>
+                                            <span style="white-space: nowrap;"
+                                              t-esc="o.partner_id.vat"/>
+                                        </p>
+                                    </td>
+                                    <td name="td_phone-mail" width="50%"
+                                        style="border-top: 0px solid transparent;text-align:left;">
+                                        <p style="margin-bottom: -1px;">
+                                            <span t-if="o.partner_shipping_id.phone" style="white-space: nowrap;"
+                                                  t-esc="o.partner_shipping_id.phone"/>
+                                            <span t-if="o.partner_shipping_id.mobile" style="white-space: nowrap;"
+                                                  t-esc="' / ' + o.partner_shipping_id.mobile"/>
+                                        </p>
+                                        <p style="margin-bottom: -1px;">
+                                            <span t-if="o.partner_shipping_id.email" style="white-space: nowrap;"
+                                                  t-esc="o.partner_shipping_id.email"/>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" name="td_nif-cif" width="100%"
+                                        style="border-top: 0px solid transparent;text-align:left;">
+                                        <p style="margin-top: 10px;">
+                                            <strong>Payment Method: </strong>
+                                            <span style="white-space: nowrap;"
+                                              t-esc="o.payment_mode_id.name"/>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row" name="invoice_b2c_body">
+                    <div class="col-sm-12">
+                        <table class="table table-sm" name="invoice_b2c_body_table" style="font-size:12px;">
+                            <thead>
+                                <tr>
+                                    <th name="th_products"
+                                        style="border-top: 1px solid #c9c9c9;text-align:left;background-color: #c9c9c9;">
+                                        Products
+                                    </th>
+                                    <th name="th_models"
+                                        style="border-top: 1px solid #c9c9c9;text-align:left;background-color: #c9c9c9;">
+                                        Models
+                                    </th>
+                                    <th name="th_taxes"
+                                        style="border-top: 1px solid #c9c9c9;text-align:right;background-color: #c9c9c9;">
+                                        Taxes
+                                    </th>
+                                    <th name="th_price_ex"
+                                        style="border-top: 1px solid #c9c9c9;text-align:right;background-color: #c9c9c9;">
+                                        Price (ex)
+                                    </th>
+                                    <th name="th_price_inc"
+                                        style="border-top: 1px solid #c9c9c9;text-align:right;background-color: #c9c9c9;">
+                                        Price (inc)
+                                    </th>
+                                    <th name="th_total_ex"
+                                        style="border-top: 1px solid #c9c9c9;text-align:right;background-color: #c9c9c9;">
+                                        Total (ex)
+                                    </th>
+                                    <th name="th_total_inc"
+                                        style="border-top: 1px solid #c9c9c9;text-align:right;background-color: #c9c9c9;">
+                                        Total (inc)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.invoice_line_ids" t-as="iline">
+                                    <t t-set="tax_value" t-value="sum(iline.tax_ids.mapped('amount'))"/>
+                                    <td name="td_qty-products"
+                                        style="border-top: 1px solid #f0f1f1;text-align:left;background-color: #f0f1f1;">
+                                        <p style="margin-bottom: 1px;">
+                                            <span style="white-space: nowrap;"
+                                              t-esc="'%.0f'%(iline.quantity)"/>
+                                            <span style="white-space: nowrap;"
+                                              t-esc="' x ' + iline.product_id.name"/>
+                                        </p>
+                                    </td>
+                                    <td name="td_default_code"
+                                        style="border-top: 1px solid #f0f1f1;text-align:left;background-color: #f0f1f1;">
+                                        <p style="margin-bottom: 1px;">
+                                            <span style="white-space: nowrap;"
+                                              t-esc="iline.product_id.default_code"/>
+                                        </p>
+                                    </td>
+                                    <td name="td_taxes"
+                                        style="border-top: 1px solid #f0f1f1;text-align:right;background-color: #f0f1f1;">
+                                        <p style="margin-bottom: 1px;">
+                                            <span style="white-space: nowrap;"
+                                                  t-esc="', '.join(map(lambda x: (x.description or x.name), iline.tax_ids))" id="iline_tax_ids"/>
+                                        </p>
+                                    </td>
+                                    <td name="td_price_ex"
+                                        style="border-top: 1px solid #f0f1f1;text-align:right;background-color: #f0f1f1;">
+                                        <p style="margin-bottom: 1px;">
+                                            <strong>
+                                                <span style="white-space: nowrap;"
+                                                  t-esc="'%.2f'%(iline.price_unit)"/>
+                                                <span style="white-space: nowrap;"
+                                                  t-esc="iline.currency_id.symbol"/>
+                                            </strong>
+                                        </p>
+                                    </td>
+                                    <td name="td_price_inc"
+                                        style="border-top: 1px solid #f0f1f1;text-align:right;background-color: #f0f1f1;">
+                                        <p style="margin-bottom: 1px;">
+                                            <t t-set="price_ex" t-value="iline.price_unit"/>
+                                            <strong>
+                                                <span style="white-space: nowrap;"
+                                                  t-esc="'%.2f'%(((price_ex * tax_value) / 100) + price_ex)"/>
+                                                <span style="white-space: nowrap;"
+                                                  t-esc="iline.currency_id.symbol"/>
+                                            </strong>
+                                        </p>
+                                    </td>
+                                    <td name="td_total_ex"
+                                        style="border-top: 1px solid #f0f1f1;text-align:right;background-color: #f0f1f1;">
+                                        <p style="margin-bottom: 1px;">
+                                            <strong>
+                                                <span style="white-space: nowrap;"
+                                                  t-esc="'%.2f'%(iline.price_unit * iline.quantity)"/>
+                                                <span style="white-space: nowrap;"
+                                                  t-esc="iline.currency_id.symbol"/>
+                                            </strong>
+                                        </p>
+                                    </td>
+                                    <td name="td_total_inc"
+                                        style="border-top: 1px solid #f0f1f1;text-align:right;background-color: #f0f1f1;">
+                                        <p style="margin-bottom: 1px;">
+                                            <t t-set="price_ex" t-value="iline.price_unit"/>
+                                            <t t-set="price_inc" t-value="((price_ex * tax_value) / 100) + price_ex"/>
+                                            <strong>
+                                                <span style="white-space: nowrap;"
+                                                  t-esc="'%.2f'%(price_inc * iline.quantity)"/>
+                                                <span style="white-space: nowrap;"
+                                                  t-esc="iline.currency_id.symbol"/>
+                                            </strong>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="clearfix" style="font-size:12px;margin-top:-15px">
+                            <div id="total" class="row">
+                                <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
+                                    <table class="table table-sm" style="page-break-inside: avoid;">
+                                        <!--Tax totals-->
+                                        <t t-set="tax_totals" t-value="json.loads(o.tax_totals_json)"/>
+                                        <t t-call="gst_eminis_account.invoice_b2b_tax_totals"/>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" name="invoice_b2c_end" style="margin-top:50px">
+                    <div class="col-sm-12">
+                        <t t-set="header_address" t-value="o.company_id.partner_id"/>
+                        <table class="table table-sm" name="invoice_b2c_end_table">
+                            <tbody>
+                                <tr>
+                                    <th name="th_regards" style="border-top: 0px solid transparent;text-align:center;">
+                                        <p style="margin-bottom: 1px;">
+                                           * Thank you very much for your purchase in e-Minis *
+                                        </p>
+                                        <p style="margin-bottom: 1px;">
+                                            <span t-esc="o.company_id.partner_id.website"/>
+                                        </p>
+                                        <p style="margin-bottom: 1px;">
+                                            The largest variety of miniatures on the web and at the best prices
+                                        </p>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td name="th_legal_warning" style="border-top: 0px solid transparent;text-align:center;font-size:12px;">
+                                        <p>
+                                            e-Minis - <t t-esc="' '.join([item for item in [
+                                                        ', '.join([item for item in [header_address.street, header_address.street2] if item]),
+                                                        header_address.zip,
+                                                        header_address.city,
+                                                        header_address.state_id and header_address.state_id.name] if item])"/>
+                                            <span style="color: white;" t-esc="'-----------'"/>
+                                            Titular: <span t-esc="o.company_id.name"/><span t-esc="' - CIF ' + o.company_id.partner_id.vat"/>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td name="th_legal_warning" style="border-top: 0px solid transparent;text-align:justify;font-size:11px;">
+                                        <p style="margin-bottom: 1px;">
+                                            <strong>AVISO LEGAL: </strong>Conforme a lo establecido en la Ley Orgánica 15/99 de
+                                            Protección de Datos de Carácter Personal, consiente que sus datos personales formen
+                                            parte de un fichero responsabilidad de <span t-esc="o.company_id.name"/> para ser
+                                            usados únicamente con fines administrativos, de facturación y contabilidad, así como
+                                            para mantenerle informado de nuestros productos, servicios y promociones.
+                                        </p>
+                                        <p>
+                                            Podrá ejercitar en todo momento sus derechos de acceso, rectificación, cancelación y
+                                            oposición en la dirección Calle <t t-esc="' '.join([item for item in [
+                                                        ', '.join([item for item in [header_address.street, header_address.street2] if item]),
+                                                        header_address.zip,
+                                                        header_address.city,
+                                                        header_address.state_id and header_address.state_id.name] if item])"/>,
+                                            o comunicándolo por correo electrónico a la dirección <span t-esc="o.company_id.partner_id.email"/>,
+                                            o por teléfono a los números
+                                            <span t-if="o.company_id.partner_id.phone" style="white-space: nowrap;"
+                                                  t-esc="o.company_id.partner_id.phone"/>
+                                            <span t-if="o.company_id.partner_id.mobile" style="white-space: nowrap;"
+                                                  t-esc="' / ' + o.company_id.partner_id.mobile"/>.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </template>
+
+        <template id="invoice_b2b_tax_totals">
+            <!-- ARGUMENTS: - tax_totals: dict in the form generated by account.move's _get_tax_totals. -->
+            <t t-foreach="tax_totals['subtotals']" t-as="subtotal">
+                <tr class="border-black o_subtotal">
+                    <td><strong t-esc="subtotal['name']"/></td>
+                    <td class="text-right">
+                        <span t-att-class="oe_subtotal_footer_separator"
+                            t-esc="subtotal['formatted_amount']"/>
+                    </td>
+                </tr>
+
+                <t t-set="subtotal_to_show" t-value="subtotal['name']"/>
+                <t t-call="account.tax_groups_totals"/>
+            </t>
+
+            <!--Total amount with all taxes-->
+            <tr class="border-black o_total">
+                <td style="font-size:14px;">
+                    <strong>Total</strong>
+                </td>
+                <td style="font-size:14px;text-align:right;">
+                    <strong><span t-esc="tax_totals['formatted_amount_total']"/></strong>
+                </td>
+            </tr>
+        </template>
+
+    </data>
+</odoo>
