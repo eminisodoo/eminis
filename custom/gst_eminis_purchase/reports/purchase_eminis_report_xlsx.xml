@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Xlsx Reports -->
+        <record id="purchase_eminis" model="ir.actions.report">
+            <field name="name">Purchase E-minis (XLSX)</field>
+            <field name="model">purchase.order</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">gst_eminis_purchase.purchase_eminis_report_xlsx</field>
+            <field name="report_file">gst_eminis_purchase.purchase_eminis_report_xlsx</field>
+            <field name="print_report_name">'Purchase E-minis'</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <menuitem id="purchase_eminis_report" name="Purchase E-minis" parent="purchase.purchase_report_main" sequence="100" groups="purchase.group_purchase_manager" action="purchase_eminis"/>
+
+    </data>
+</odoo>
