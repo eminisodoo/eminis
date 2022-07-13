@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Xlsx Reports -->
+        <record id="picking_list" model="ir.actions.report">
+            <field name="name">PickingList (XLSX)</field>
+            <field name="model">stock.picking.batch</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">gst_eminis_picking_list.picking_list_report_xlsx</field>
+            <field name="report_file">gst_eminis_picking_list.picking_list_report_xlsx</field>
+            <field name="print_report_name">(object._get_report_filename())</field>
+            <field name="binding_model_id" ref="model_stock_picking_batch"/>
+            <field name="binding_type">report</field>
+        </record>
+
+    </data>
+</odoo>

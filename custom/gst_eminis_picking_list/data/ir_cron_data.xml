@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock_picking_batch_job" model="ir.cron">
+        <field name="name">Automatic Stock Picking Batch</field>
+        <field name="model_id" ref="model_stock_picking_batch"/>
+        <field name="state">code</field>
+        <field name="code">model._run_stock_picking_batch()</field>
+        <field name='interval_number'>1</field>
+        <field name='interval_type'>days</field>
+        <field name="numbercall">-1</field>
+        <field name="nextcall" eval="(DateTime.now() + timedelta(days=1)).strftime('%Y-%m-%d 05:00:00')"/>
+    </record>
+</odoo>

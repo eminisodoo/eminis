@@ -12,7 +12,7 @@ class DeliveryCarrier(models.Model):
     _inherit = "delivery.carrier"
 
     delivery_type = fields.Selection(selection_add=[("mrw_vts", "MRW")], ondelete={'mrw_vts': 'set default'})
-    package_id = fields.Many2one('product.packaging', string="package", help="please select package type")
+    package_id = fields.Many2one('stock.package.type', string="package", help="please select package type")
     mrw_service_code = fields.Selection([('0000', '0000 - Urgent 10'),
                                          ('0005', '0005 - Urgent Today'),
                                          ('0010', '0010 - Promotions'),

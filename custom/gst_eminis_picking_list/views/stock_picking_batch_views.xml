@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_stock_move_tree_inherit" model="ir.ui.view">
+        <field name="name">view.stock.move.tree.inherit</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock_picking_batch.view_picking_move_tree_inherited"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='picking_id']" position="after">
+                <field name="origin"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_stock_move_line_tree_inherit" model="ir.ui.view">
+        <field name="name">view.stock.move.line.tree.inherit</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock_picking_batch.view_move_line_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='picking_id']" position="after">
+                <field name="origin"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
