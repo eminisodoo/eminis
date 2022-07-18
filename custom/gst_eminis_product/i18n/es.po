@@ -65,3 +65,77 @@ msgstr "Reservar"
 #: model:ir.model.fields.selection,name:gst_eminis_product.selection__product_template__purchase_tags__to_buy
 msgid "To Buy"
 msgstr "Comprar"
+
+#. module: gst_eminis_product
+#: model:ir.actions.report,print_report_name:gst_eminis_product.report_product_template_label_eminis
+msgid "'Products Labels - %s' % (object.name)"
+msgstr "'Etiquetas del Producto - %s' % (object.name)"
+
+#. module: gst_eminis_product
+#: model:ir.actions.server,name:gst_eminis_product.update_changed_price_job_ir_actions_server
+#: model:ir.cron,cron_name:gst_eminis_product.update_changed_price_job
+#: model:ir.cron,name:gst_eminis_product.update_changed_price_job
+msgid "Automatic Update Changed Price in products"
+msgstr "Actualización automática de precio modificado en los productos"
+
+#. module: gst_eminis_product
+#: model:ir.model.fields,field_description:gst_eminis_product.field_product_product__changed_date
+#: model:ir.model.fields,field_description:gst_eminis_product.field_product_template__changed_date
+msgid "Changed Date"
+msgstr "Fecha de Modificado"
+
+#. module: gst_eminis_product
+#: model:ir.model.fields,field_description:gst_eminis_product.field_product_product__changed_price
+#: model:ir.model.fields,field_description:gst_eminis_product.field_product_template__changed_price
+msgid "Changed Price"
+msgstr "Precio Modificado"
+
+#. module: gst_eminis_product
+#: model:ir.model,name:gst_eminis_product.model_product_label_layout
+msgid "Choose the sheet layout to print the labels"
+msgstr "Elija el diseño de la hoja para imprimir etiquetas"
+
+#. module: gst_eminis_product
+#: model:ir.model.fields,field_description:gst_eminis_product.field_product_label_layout__print_format
+msgid "Format"
+msgstr "Formatear"
+
+#. module: gst_eminis_product
+#: model:ir.model.fields,field_description:gst_eminis_product.field_product_product__offer_price
+#: model:ir.model.fields,field_description:gst_eminis_product.field_product_template__offer_price
+msgid "Offer Price"
+msgstr "Precio en Oferta"
+
+#. module: gst_eminis_product
+#: model:ir.model.fields,field_description:gst_eminis_product.field_product_product__previous_price
+#: model:ir.model.fields,field_description:gst_eminis_product.field_product_template__previous_price
+msgid "Previous Price"
+msgstr "Precio Anterior"
+
+#. module: gst_eminis_product
+#: model:ir.actions.report,name:gst_eminis_product.report_product_template_label_eminis
+msgid "Product Label (PDF)"
+msgstr "Etiqueta de producto (PDF)"
+
+#. module: gst_eminis_product
+#: model:ir.model,name:gst_eminis_product.model_report_gst_eminis_product_report_producttemplatelabel_eminis
+msgid "Product Label Report"
+msgstr "Reporte Etiqueta de Producto"
+
+#. module: gst_eminis_product
+#: code:addons/gst_eminis_product/reports/product_label_report.py:0
+#, python-format
+msgid "Product model not defined, Please contact your administrator."
+msgstr "Modelo de Producto no definido, por favor contacte con su administreador."
+
+#. module: gst_eminis_product
+#: model_terms:ir.ui.view,arch_db:gst_eminis_product.view_product_template_search_inherit
+msgid "With changed price"
+msgstr "Con Precio Modificado"
+
+#. module: gst_eminis_product
+#: code:addons/gst_eminis_product/wizard/product_label_layout.py:0
+#, python-format
+msgid "You need to set a positive quantity."
+msgstr "Necesita establecer una cantidad positiva."
+

@@ -88,11 +88,28 @@ class PurchaseEminisXlsx(models.AbstractModel):
             filter_date = fields.Datetime.now() - relativedelta(days=60)
             so_v60 = self.env['sale.order.line'].search([('product_id','=',line['product_id'])])\
                 .filtered(lambda line: line.order_id.date_order >= filter_date)
+            po_v60 = self.env['pos.order.line'].search([('product_id','=',line['product_id'])])\
+                .filtered(lambda line: line.order_id.date_order >= filter_date)
 
             qty_with_offer_v60 = 0
             qty_without_offer_v60 = 0
             for sol in so_v60:
-                if sol.price_unit <= product.list_price - percent:
+                if sol.discount > 0:
+                    if (sol.price_unit * sol.discount)/100 >= percent:
+                        qty_with_offer_v60 += 1
+                    else:
+                        qty_without_offer_v60 += 1
+                elif sol.price_unit <= product.list_price - percent:
+                    qty_with_offer_v60 += 1
+                else:
+                    qty_without_offer_v60 += 1
+            for sol in po_v60:
+                if sol.discount > 0:
+                    if (sol.price_unit * sol.discount)/100 >= percent:
+                        qty_with_offer_v60 += 1
+                    else:
+                        qty_without_offer_v60 += 1
+                elif sol.price_unit <= product.list_price - percent:
                     qty_with_offer_v60 += 1
                 else:
                     qty_without_offer_v60 += 1
@@ -106,11 +123,28 @@ class PurchaseEminisXlsx(models.AbstractModel):
             filter_date = fields.Datetime.now()
             so_sales = self.env['sale.order.line'].search([('product_id','=',line['product_id'])])\
                 .filtered(lambda line: line.order_id.date_order <= filter_date)
+            po_sales = self.env['pos.order.line'].search([('product_id','=',line['product_id'])])\
+                .filtered(lambda line: line.order_id.date_order <= filter_date)
 
             qty_with_offer = 0
             qty_without_offer = 0
             for sol in so_sales:
-                if sol.price_unit <= product.list_price - percent:
+                if sol.discount > 0:
+                    if (sol.price_unit * sol.discount)/100 >= percent:
+                        qty_with_offer += 1
+                    else:
+                        qty_without_offer += 1
+                elif sol.price_unit <= product.list_price - percent:
+                    qty_with_offer += 1
+                else:
+                    qty_without_offer += 1
+            for sol in po_sales:
+                if sol.discount > 0:
+                    if (sol.price_unit * sol.discount)/100 >= percent:
+                        qty_with_offer += 1
+                    else:
+                        qty_without_offer += 1
+                elif sol.price_unit <= product.list_price - percent:
                     qty_with_offer += 1
                 else:
                     qty_without_offer += 1

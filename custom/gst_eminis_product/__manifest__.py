@@ -13,11 +13,16 @@
             - On way: there is no stock but there is a confirmed purchase receipt.
             - Pre-order: no stock, no delivery note. But the amount that can be purchased is indicated.
             - Reserve: there is no stock or delivery notes. In the event that it was pre-ordered and the quantities have been sold out, it must also be shown as a reserve.
+        * Add E-minis option to print the Product Tags.
         """,
     "depends": [
         "product",
     ],
     "data": [
         "views/product_template_views.xml",
+        "data/ir_cron_data.xml",
+        "reports/product_reports.xml",
+        "reports/product_product_templates.xml",
+        "reports/product_template_templates.xml",
     ]
 }
