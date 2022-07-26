@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<templates>
+    <t t-name="ProductItem"
+        t-inherit="point_of_sale.ProductItem"
+        t-inherit-mode="extension">
+
+        <xpath expr="//div[@class='product-img']" position="inside">
+            <t t-if="props.product.changed_price">
+                <i role="img" aria-label="Changed Price" title="Changed Price" class="product-alert-button fa fa-exclamation-triangle"/>
+            </t>
+        </xpath>
+
+    </t>
+</templates>
+

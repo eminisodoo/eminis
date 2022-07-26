@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_template_label_eminis_report" model="ir.actions.report">
+        <field name="name">Product Label (PDF)</field>
+        <field name="model">report.gst_eminis_product.report_producttemplatelabel_eminis</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">gst_eminis_product.report_producttemplatelabel_eminis</field>
+        <field name="paperformat_id" ref="gst_eminis_product.paperformat_label_sheet_eminis"/>
+    </record>
+
+</odoo>

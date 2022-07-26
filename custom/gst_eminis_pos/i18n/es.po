@@ -1,0 +1,81 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* gst_eminis_pos
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-26 13:44+0000\n"
+"PO-Revision-Date: 2022-07-26 13:44+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: gst_eminis_pos
+#: model:ir.actions.report,print_report_name:gst_eminis_pos.product_template_label_eminis_report
+msgid "'Product Label'"
+msgstr "'Etiqueta de Producto'"
+
+#. module: gst_eminis_pos
+#. openerp-web
+#: code:addons/gst_eminis_pos/static/src/xml/Screens/ProductScreen/ProductScreen.xml:0
+#, python-format
+msgid "Alert message"
+msgstr "Mensaje de alerta"
+
+#. module: gst_eminis_pos
+#. openerp-web
+#: code:addons/gst_eminis_pos/static/src/xml/Screens/ProductScreen/ProductItem.xml:0
+#: code:addons/gst_eminis_pos/static/src/xml/Screens/ProductScreen/ProductItem.xml:0
+#, python-format
+msgid "Changed Price"
+msgstr "Producto con el precio modificado"
+
+#. module: gst_eminis_pos
+#. openerp-web
+#: code:addons/gst_eminis_pos/static/src/xml/Screens/ControlButtons/PrintTagsButton.xml:0
+#: code:addons/gst_eminis_pos/static/src/xml/Screens/ControlButtons/PrintTagsButton.xml:0
+#, python-format
+msgid "Print Tags"
+msgstr "Imprimir Etiquetas"
+
+#. module: gst_eminis_pos
+#. openerp-web
+#: code:addons/gst_eminis_pos/static/src/xml/Screens/ControlButtons/PrintTagsButton.xml:0
+#, python-format
+msgid "Print Tags to products with changed price"
+msgstr "Imprime las etiquetas para los productos con alerta de Precio modificado"
+
+#. module: gst_eminis_pos
+#: model:ir.actions.report,name:gst_eminis_pos.product_template_label_eminis_report
+msgid "Product Label (PDF)"
+msgstr "Etiqueta de producto (PDF)"
+
+#. module: gst_eminis_pos
+#: model:ir.model,name:gst_eminis_pos.model_report_gst_eminis_product_report_producttemplatelabel_eminis
+msgid "Product Label Report"
+msgstr "Reporte Etiqueta de Producto"
+
+#. module: gst_eminis_pos
+#: code:addons/gst_eminis_pos/reports/product_label_report.py:0
+#, python-format
+msgid "Product model not defined, Please contact your administrator."
+msgstr "El modelo del producto no está definido, contacte a su administrador."
+
+#. module: gst_eminis_pos
+#. openerp-web
+#: code:addons/gst_eminis_pos/static/src/js/Screens/ControlButtons/PrintTagsButton.js:0
+#, python-format
+msgid "Sending download request..."
+msgstr "Enviando solicitud de descarga..."
+
+#. module: gst_eminis_pos
+#: code:addons/gst_eminis_pos/controllers/main.py:0
+#, python-format
+msgid "Product Labels.%s"
+msgstr "Etiqueta de Productos.%s"
+

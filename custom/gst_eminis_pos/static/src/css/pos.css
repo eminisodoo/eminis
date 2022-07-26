@@ -1,0 +1,51 @@
+/*  e) the product */
+
+.pos .product .product-alert-button {
+    position: absolute;
+    top: 2px;
+    left: 25px;
+    font-size: 13px;
+    border-radius: 2px;
+    background-color: #ec837e;
+    color: white;
+    padding: 1px;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;}
+
+.pos .product .product-alert-button:hover {
+    background-color: #784441;
+}
+
+/* Alert message box */
+.hidden {
+    display: none;
+}
+div.alert_box {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 2000;
+}
+div.message_box  {
+    position: fixed;
+    background-color: white;
+    margin-top: 20%;
+    margin-left: 35%;
+    height: auto;
+    right: auto;
+    border: 1px solid darkgrey;
+    opacity: 0.9;
+    text-align: center;
+    border-radius: 3px;
+}
+label.message_text {
+    margin-top: 20%;
+    margin-bottom: 20%;
+    width: 60%;
+    font-size: xx-large;
+}

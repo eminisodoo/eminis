@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="PrintTagsButton" owl="1">
+        <div class="control-button">
+            <i class="fa fa-print" role="img" aria-label="Print Tags" title="Print Tags to products with changed price"/>
+            Print Tags
+        </div>
+    </t>
+
+</templates>
